@@ -1,0 +1,22 @@
+# Ignorar dependencias de Composer
+/vendor/
+
+# Ignorar archivos de entorno con datos sensibles
+.env
+
+# Ignorar archivos de logs locales
+*.log
+
+# Ignorar archivos temporales y de sistema
+*.cache
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Ignorar archivos de configuración del editor
+.vscode/
+.idea/
+
+# Ignorar archivos de base de datos locales (si usas SQLite u otros)
+*.sqlite
+*.db
