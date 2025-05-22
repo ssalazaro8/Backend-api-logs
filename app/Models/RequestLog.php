@@ -31,8 +31,22 @@ class RequestLog {
     public function getAll() {
         $query = "SELECT * FROM {$this->table} ORDER BY CreatedAt DESC";
         $stmt = $this->conn->query($query);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Normaliza las claves a minúsculas para frontend
+        $normalized = array_map(function($row) {
+            return [
+            'id' => $row['Id'],
+            'endpoint' => $row['Endpoint'],
+            'method' => $row['Method'],
+            'responseData' => $row['ResponseData'],
+            'createdAt' => $row['CreatedAt'],
+            ];
+        }, $results);
+
+        return $normalized;
     }
+
 
     public function getById($id) {
         $query = "SELECT * FROM {$this->table} WHERE Id = :id";

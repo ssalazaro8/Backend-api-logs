@@ -12,8 +12,8 @@ return function (App $app) {
     // Listar publicaciones (posts)
     $app->get('/posts', [PostController::class, 'listPosts']);
 
-    // Consultar álbumes de un usuario específico
-    $app->get('/albums/{userId}', [AlbumController::class, 'getAlbumsByUser']);
+    // Consultar álbumes filtrados por userId como query param
+    $app->get('/albums[/{userId}]', [AlbumController::class, 'getAlbums']);
 
     // Listar registros de peticiones
     $app->get('/logs', [LogController::class, 'listLogs']);
